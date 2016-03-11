@@ -1,0 +1,23 @@
+require 'bundler/setup'
+
+ENVIRONMENT = (ENV['ENV'] || ENV['RACK_ENV'] || 'development').to_sym
+
+Dir["#{__dir__}/tasks/*.rake"].each{|rake_file| import rake_file}
+
+lib_path = File.join(File.dirname(__FILE__), 'lib')
+$:.unshift(lib_path) unless $:.include?(lib_path)
+
+require 'rubocop/rake_task'
+
+desc 'Run RuboCop on the lib directory'
+RuboCop::RakeTask.new(:rubocop) do |task|
+
+  task.patterns = ['lib/**/*.rb']
+
+  # only show the files with failures
+  task.formatters = ['files']
+
+  # don't abort rake on failure
+  task.fail_on_error = true
+end
+

@@ -1,0 +1,15 @@
+development:
+  adapter: mysql2
+  database: cancel_tv
+  username: root
+  password:
+  host: localhost
+  reconnect: true
+
+test:
+  database: cancel_tv<%= ENV['TEST_ENV_NUMBER'] %>
+  adapter: mysql2
+  username: root
+  password:
+  host: localhost
+  reconnect: true
