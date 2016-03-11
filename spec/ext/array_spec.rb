@@ -13,7 +13,7 @@ describe Array do
     end
   end
 
-  describe '.sometestfunction' do
+  describe '.entry_first' do
      it 'fails on Circle CI' do
        expect([1,2,3,4].entry_first(4) ).to eq [4,1,2,3]
      end
